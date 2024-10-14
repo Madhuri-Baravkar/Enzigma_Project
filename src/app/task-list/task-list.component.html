@@ -1,0 +1,16 @@
+<h1>Tasks</h1>
+<button (click)="router.navigate(['/create-task'])">New Task</button>
+
+<div *ngIf="tasks.length > 0; else noTasks">
+  <ul>
+    <li *ngFor="let task of tasks">
+      {{ task.assignedTo }} - {{ task.status }}
+      <button (click)="editTask(task.id)">Edit</button>
+      <button (click)="confirmDelete(task)">Delete</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noTasks>
+  <p>No tasks available.</p>
+</ng-template>
